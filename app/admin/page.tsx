@@ -30,17 +30,6 @@ export default function AdminPage() {
     isUrgent: false,
   });
 
-  if (
-  session?.user?.email !==
-  "brianwanyoike17@gmail.com"
-) {
-  return (
-    <div className="min-h-screen bg-black text-white p-10">
-      Access Denied
-    </div>
-  );
-}
-
   async function fetchData() {
     const listingsRes = await fetch("/api/listings");
     const listingsData = await listingsRes.json();
@@ -56,6 +45,17 @@ export default function AdminPage() {
   useEffect(() => {
     fetchData();
   }, []);
+
+    if (
+  session?.user?.email !==
+  "brianwanyoike17@gmail.com"
+) {
+  return (
+    <div className="min-h-screen bg-black text-white p-10">
+      Access Denied
+    </div>
+  );
+}
 
   async function createListing(e: any) {
     e.preventDefault();
