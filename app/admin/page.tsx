@@ -8,17 +8,6 @@ export default function AdminPage() {
     const { data: session } =
     useSession();
 
-if (
-  session?.user?.email !==
-  "brianwanyoike17@gmail.com"
-) {
-  return (
-    <div className="min-h-screen bg-black text-white p-10">
-      Access Denied
-    </div>
-  );
-}
-
   const [listings, setListings] = useState<any[]>([]);
   const [payments, setPayments] = useState<any[]>([]);
 
@@ -40,6 +29,17 @@ if (
     isVerified: false,
     isUrgent: false,
   });
+
+  if (
+  session?.user?.email !==
+  "brianwanyoike17@gmail.com"
+) {
+  return (
+    <div className="min-h-screen bg-black text-white p-10">
+      Access Denied
+    </div>
+  );
+}
 
   async function fetchData() {
     const listingsRes = await fetch("/api/listings");
