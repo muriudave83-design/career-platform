@@ -1,0 +1,72 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  course    String?
+  location  String?
+  createdAt DateTime @default(now())
+  bookmarks Bookmark[]
+  payments  Payment[]
+  role      String @default("USER")
+}
+
+model Listing {
+  id            String   @id @default(cuid())
+  title         String
+  company       String
+  location      String
+  description   String
+  applyUrl      String?
+  isVerified    Boolean  @default(false)
+  isUrgent      Boolean  @default(false)
+  isHighAccept  Boolean  @default(false)
+  difficulty    String?
+  tips          String?
+  createdAt     DateTime @default(now())
+  bookmarks     Bookmark[]
+  isPremium     Boolean @default(false)
+  payments      Payment[]
+}
+
+model Bookmark {
+  id        String   @id @default(cuid())
+  userId    String
+  listingId String
+  createdAt DateTime @default(now())
+
+  user    User    @relation(fields: [userId], references: [id])
+  listing Listing @relation(fields: [listingId], references: [id])
+
+  @@unique([userId, listingId])
+}
+
+model Report {
+  id        String   @id @default(cuid())
+  message   String
+  listingId String?
+  createdAt DateTime @default(now())
+}
+
+model Payment {
+  id        String   @id @default(cuid())
+  userId    String
+  listingId String?
+  phone     String?
+  amount    Int
+  status    String
+  createdAt DateTime @default(now())
+
+  user    User    @relation(fields: [userId], references: [id])
+  listing Listing? @relation(fields: [listingId], references: [id])
+  @@unique([userId, listingId])
+}
