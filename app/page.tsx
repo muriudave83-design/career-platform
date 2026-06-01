@@ -50,8 +50,15 @@ export default function Home() {
             >
               Companies
             </a>
-          </div>
 
+            <Link
+              href="/contact"
+              className="hover:text-[#00C853] transition-all duration-300"
+            >
+              Contact
+            </Link>
+          </div>
+          
           {/* Buttons */}
           <div className="flex items-center gap-4">
             {!session?.user ? (
@@ -352,6 +359,315 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="py-24 px-6 bg-white">
+
+          <div className="max-w-7xl mx-auto">
+
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Students Trust JoinNexiva
+              </h2>
+
+              <p className="text-gray-600 text-lg max-w-2xl mx-auto leading-8">
+                Students and graduates across Kenya are discovering verified internships and launching their careers through JoinNexiva.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+
+              {/* Card 1 */}
+              <div className="bg-[#f8fff9] rounded-3xl p-8 shadow-[0_10px_40px_rgba(0,0,0,0.06)] hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
+
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-14 h-14 rounded-full bg-green-200"></div>
+
+                  <div>
+                    <h3 className="font-bold text-gray-900">
+                      Brian Mwangi
+                    </h3>
+
+                    <p className="text-gray-500 text-sm">
+                      Computer Science Student
+                    </p>
+                  </div>
+                </div>
+
+                <p className="text-gray-600 leading-8">
+                  “JoinNexiva helped me find my first software engineering internship in Nairobi. The platform feels modern and trustworthy.”
+                </p>
+              </div>
+
+              {/* Card 2 */}
+              <div className="bg-[#f8fff9] rounded-3xl p-8 shadow-[0_10px_40px_rgba(0,0,0,0.06)] hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
+
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-14 h-14 rounded-full bg-pink-200"></div>
+
+                  <div>
+                    <h3 className="font-bold text-gray-900">
+                      Mercy Atieno
+                    </h3>
+
+                    <p className="text-gray-500 text-sm">
+                      Finance Graduate
+                    </p>
+                  </div>
+                </div>
+
+                <p className="text-gray-600 leading-8">
+                  “I discovered graduate trainee opportunities I couldn’t easily find elsewhere. The verified listings gave me confidence.”
+                </p>
+              </div>
+
+              {/* Card 3 */}
+              <div className="bg-[#f8fff9] rounded-3xl p-8 shadow-[0_10px_40px_rgba(0,0,0,0.06)] hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
+
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-14 h-14 rounded-full bg-green-300"></div>
+
+                  <div>
+                    <h3 className="font-bold text-gray-900">
+                      Kevin Kiptoo
+                    </h3>
+
+                    <p className="text-gray-500 text-sm">
+                      Marketing Student
+                    </p>
+                  </div>
+                </div>
+
+                <p className="text-gray-600 leading-8">
+                  “The internship search experience is clean and easy to use. I applied to multiple opportunities directly from JoinNexiva.”
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+                <section className="py-24 px-6 bg-[#f8fff9] border-t border-green-100">
+
+          <div className="max-w-7xl mx-auto">
+
+            <div className="text-center mb-16">
+
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Explore Internship Categories
+              </h2>
+
+              <p className="text-gray-600 text-lg max-w-2xl mx-auto leading-8">
+                Discover internship and graduate opportunities across Kenya in technology, finance, marketing, design, business, and more.
+              </p>
+
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+              {/* Category Card */}
+              <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-[0_10px_40px_rgba(0,0,0,0.05)] hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 cursor-pointer">
+
+                <div className="w-14 h-14 rounded-2xl bg-green-100 flex items-center justify-center text-2xl mb-6">
+                  💻
+                </div>
+
+                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  Software Engineering
+                </h3>
+
+                <p className="text-gray-600 leading-7">
+                  Explore software development, web engineering, and IT internship opportunities.
+                </p>
+
+              </div>
+
+              {/* Category Card */}
+              <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-[0_10px_40px_rgba(0,0,0,0.05)] hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 cursor-pointer">
+
+                <div className="w-14 h-14 rounded-2xl bg-pink-100 flex items-center justify-center text-2xl mb-6">
+                  📈
+                </div>
+
+                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  Marketing
+                </h3>
+
+                <p className="text-gray-600 leading-7">
+                  Discover digital marketing, social media, and brand strategy internships.
+                </p>
+
+              </div>
+
+              {/* Category Card */}
+              <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-[0_10px_40px_rgba(0,0,0,0.05)] hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 cursor-pointer">
+
+                <div className="w-14 h-14 rounded-2xl bg-green-100 flex items-center justify-center text-2xl mb-6">
+                  💰
+                </div>
+
+                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  Finance
+                </h3>
+
+                <p className="text-gray-600 leading-7">
+                  Find finance, accounting, and graduate trainee opportunities across Kenya.
+                </p>
+
+              </div>
+
+              {/* Category Card */}
+              <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-[0_10px_40px_rgba(0,0,0,0.05)] hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 cursor-pointer">
+
+                <div className="w-14 h-14 rounded-2xl bg-pink-100 flex items-center justify-center text-2xl mb-6">
+                  🎨
+                </div>
+
+                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  Design
+                </h3>
+
+                <p className="text-gray-600 leading-7">
+                  Explore UI/UX, graphic design, and creative internship opportunities.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+        <section className="py-24 px-6 bg-white border-t border-green-100">
+
+          <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+
+            {/* Left Content */}
+            <div>
+
+              <span className="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+                Why JoinNexiva
+              </span>
+
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-8">
+                Built for Students & Graduates Looking for Real Opportunities
+              </h2>
+
+              <p className="text-gray-600 text-lg leading-8 mb-10">
+                JoinNexiva helps students and graduates across Kenya discover verified internships, industrial attachments, graduate trainee programs, and entry-level career opportunities from trusted companies.
+              </p>
+
+              <div className="space-y-6">
+
+                <div className="flex gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-green-100 flex items-center justify-center text-xl">
+                    ✅
+                  </div>
+
+                  <div>
+                    <h3 className="font-bold text-gray-900 text-lg mb-1">
+                      Verified Opportunities
+                    </h3>
+
+                    <p className="text-gray-600 leading-7">
+                      We focus on quality internship listings from trusted employers and organizations.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-pink-100 flex items-center justify-center text-xl">
+                    🚀
+                  </div>
+
+                  <div>
+                    <h3 className="font-bold text-gray-900 text-lg mb-1">
+                      Career-Focused Platform
+                    </h3>
+
+                    <p className="text-gray-600 leading-7">
+                      Built specifically for students, graduates, and early-career professionals in Kenya.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-green-100 flex items-center justify-center text-xl">
+                    🌍
+                  </div>
+
+                  <div>
+                    <h3 className="font-bold text-gray-900 text-lg mb-1">
+                      Opportunities Across Kenya
+                    </h3>
+
+                    <p className="text-gray-600 leading-7">
+                      Explore internships and graduate programs from companies across multiple industries and cities.
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+            {/* Right Card */}
+            <div className="relative">
+
+              <div className="bg-[linear-gradient(to_bottom_right,#ffffff,#f6fff7,#ecfff1)] rounded-[32px] p-10 shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-green-100">
+
+                <div className="grid grid-cols-2 gap-6">
+
+                  <div className="bg-white rounded-3xl p-6 shadow-md">
+                    <h3 className="text-4xl font-black text-gray-900 mb-2">
+                      150+
+                    </h3>
+
+                    <p className="text-gray-600">
+                      Verified Opportunities
+                    </p>
+                  </div>
+
+                  <div className="bg-white rounded-3xl p-6 shadow-md">
+                    <h3 className="text-4xl font-black text-gray-900 mb-2">
+                      5K+
+                    </h3>
+
+                    <p className="text-gray-600">
+                      Student Applications
+                    </p>
+                  </div>
+
+                  <div className="bg-white rounded-3xl p-6 shadow-md">
+                    <h3 className="text-4xl font-black text-gray-900 mb-2">
+                      50+
+                    </h3>
+
+                    <p className="text-gray-600">
+                      Hiring Companies
+                    </p>
+                  </div>
+
+                  <div className="bg-white rounded-3xl p-6 shadow-md">
+                    <h3 className="text-4xl font-black text-gray-900 mb-2">
+                      24/7
+                    </h3>
+
+                    <p className="text-gray-600">
+                      Career Access
+                    </p>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
         {/* HOW IT WORKS */}
         <section className="py-24 px-6 bg-[#FBFFFC] border-t border-green-100">
           <div className="max-w-7xl mx-auto">
@@ -420,29 +736,205 @@ export default function Home() {
           </div>
         </section>
 
-        {/* CTA SECTION */}
-        <section className="py-24 bg-[linear-gradient(to_bottom_right,#00C853,#00A63E)] text-white border-t border-green-100 relative overflow-hidden">
+        {/* DYNAMIC HYBRID SECTION */}
+        <section className="py-24 px-6 bg-[#f8fff9] border-t border-green-100">
 
-          <div className="absolute top-0 right-0 w-80 h-80 bg-white/10 blur-3xl rounded-full"></div>
+          <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-8">
 
-          <div className="max-w-5xl mx-auto text-center px-6 relative">
+            {/* LEFT LARGE PANEL */}
+            <div className="lg:col-span-2 bg-white rounded-[32px] p-10 shadow-[0_10px_40px_rgba(0,0,0,0.06)] border border-green-100">
 
-            <h2 className="text-5xl md:text-6xl font-black tracking-tight leading-[1] mb-8">
-              Ready To Start Your Career Journey?
+              <div className="flex items-center justify-between mb-8">
+
+                <div>
+                  <p className="text-[#00C853] font-semibold mb-2">
+                    Latest Opportunities
+                  </p>
+
+                  <h2 className="text-3xl font-bold text-[#111827]">
+                    Trending Internships
+                  </h2>
+                </div>
+
+                <Link
+                  href="/listings"
+                  className="text-pink-500 font-semibold hover:text-pink-600 transition"
+                >
+                  View All →
+                </Link>
+
+              </div>
+
+              <div className="space-y-5">
+
+                {/* Opportunity */}
+                <div className="flex items-center justify-between p-5 rounded-2xl bg-[#f8fff9] hover:bg-green-50 transition-all duration-300">
+
+                  <div>
+                    <h3 className="font-bold text-[#111827]">
+                      Software Engineering Intern
+                    </h3>
+
+                    <p className="text-gray-500">
+                      Safaricom • Nairobi
+                    </p>
+                  </div>
+
+                  <span className="bg-green-100 text-green-700 px-4 py-2 rounded-xl text-sm font-semibold">
+                    Verified
+                  </span>
+
+                </div>
+
+                <div className="flex items-center justify-between p-5 rounded-2xl bg-[#f8fff9] hover:bg-green-50 transition-all duration-300">
+
+                  <div>
+                    <h3 className="font-bold text-[#111827]">
+                      Marketing Intern
+                    </h3>
+
+                    <p className="text-gray-500">
+                      NCBA • Hybrid
+                    </p>
+                  </div>
+
+                  <span className="bg-pink-100 text-pink-600 px-4 py-2 rounded-xl text-sm font-semibold">
+                    New
+                  </span>
+
+                </div>
+
+                <div className="flex items-center justify-between p-5 rounded-2xl bg-[#f8fff9] hover:bg-green-50 transition-all duration-300">
+
+                  <div>
+                    <h3 className="font-bold text-[#111827]">
+                      Finance Graduate Trainee
+                    </h3>
+
+                    <p className="text-gray-500">
+                      Equity Bank • Nairobi
+                    </p>
+                  </div>
+
+                  <span className="bg-green-100 text-green-700 px-4 py-2 rounded-xl text-sm font-semibold">
+                    Verified
+                  </span>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            {/* RIGHT SIDEBAR */}
+            <div className="space-y-8">
+
+              {/* VIDEO CARD */}
+              <div className="bg-white rounded-[32px] overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.06)] border border-green-100">
+
+                <div className="aspect-video bg-gray-200">
+
+                  <iframe
+                    className="w-full h-full"
+                    src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                    title="Career Tips"
+                    allowFullScreen
+                  />
+
+                </div>
+
+                <div className="p-6">
+
+                  <h3 className="text-xl font-bold text-[#111827] mb-3">
+                    Career Tips & Internship Advice
+                  </h3>
+
+                  <p className="text-gray-600 leading-7">
+                    Learn how to improve your CV, prepare for interviews, and stand out to recruiters.
+                  </p>
+
+                </div>
+
+              </div>
+
+              {/* COMPANIES */}
+              <div className="bg-white rounded-[32px] p-8 shadow-[0_10px_40px_rgba(0,0,0,0.06)] border border-green-100">
+
+                <p className="text-[#00C853] font-semibold mb-4">
+                  Trusted Companies
+                </p>
+
+                <div className="flex flex-wrap gap-3">
+
+                  <span className="bg-[#f8fff9] px-4 py-2 rounded-xl font-semibold text-gray-700">
+                    Safaricom
+                  </span>
+
+                  <span className="bg-[#f8fff9] px-4 py-2 rounded-xl font-semibold text-gray-700">
+                    KCB
+                  </span>
+
+                  <span className="bg-[#f8fff9] px-4 py-2 rounded-xl font-semibold text-gray-700">
+                    Equity
+                  </span>
+
+                  <span className="bg-[#f8fff9] px-4 py-2 rounded-xl font-semibold text-gray-700">
+                    Microsoft
+                  </span>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+        {/* FINAL CTA */}
+        <section className="py-28 px-6 relative overflow-hidden">
+
+          {/* Background */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_bottom_right,#00C853,#00E676)]"></div>
+
+          {/* Glow */}
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-white/20 blur-3xl rounded-full"></div>
+
+          <div className="relative max-w-5xl mx-auto text-center text-white">
+
+            <span className="inline-block bg-white/20 backdrop-blur-md px-5 py-2 rounded-full text-sm font-semibold mb-8">
+              Start Your Career Journey
+            </span>
+
+            <h2 className="text-5xl md:text-6xl font-black leading-tight mb-8">
+              Discover Verified Internships & Graduate Opportunities Across Kenya
             </h2>
 
-            <p className="text-xl text-white/90 leading-8 mb-12 max-w-3xl mx-auto">
-              Join ambitious students and graduates discovering verified
-              internship opportunities across Kenya.
+            <p className="text-white/90 text-xl leading-9 max-w-3xl mx-auto mb-12">
+              Join thousands of ambitious students and graduates using JoinNexiva to find internships, industrial attachments, and early-career opportunities from trusted companies.
             </p>
 
-            <Link
-              href="/listings"
-              className="inline-block bg-pink-500 hover:bg-pink-600 transition-all duration-300 hover:scale-[1.02] shadow-lg hover:shadow-xl text-white px-10 py-5 rounded-2xl text-xl font-bold"
-            >
-              Explore Internships
-            </Link>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
+
+              <a
+                href="/register"
+                className="bg-pink-500 hover:bg-pink-600 transition-all duration-300 hover:scale-[1.02] px-10 py-5 rounded-2xl text-lg font-bold shadow-2xl"
+              >
+                Get Started
+              </a>
+
+              <a
+                href="/listings"
+                className="bg-white text-green-700 hover:bg-green-50 transition-all duration-300 px-10 py-5 rounded-2xl text-lg font-bold"
+              >
+                Browse Internships
+              </a>
+
+            </div>
+
           </div>
+
         </section>
 
         {/* FOOTER */}
@@ -517,26 +1009,41 @@ export default function Home() {
               </h4>
 
               <div className="space-y-3 text-gray-600">
+
                 <a
-                  href="#"
-                  className="block hover:text-[#00C853] transition-all duration-300"
+                  href="https://www.linkedin.com/in/join-nexiva-a147b2412"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block hover:text-[#00C853] transition"
                 >
                   LinkedIn
                 </a>
 
                 <a
-                  href="#"
-                  className="block hover:text-[#00C853] transition-all duration-300"
+                  href="https://www.instagram.com/joinnexiva"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block hover:text-[#00C853] transition"
                 >
-                  Twitter
+                  Instagram
                 </a>
 
                 <a
-                  href="#"
-                  className="block hover:text-[#00C853] transition-all duration-300"
+                  href="https://www.tiktok.com/@joinnexiva"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block hover:text-[#00C853] transition"
                 >
-                  Contact
+                  TikTok
                 </a>
+
+                <a
+                  href="/contact"
+                  className="block hover:text-[#00C853] transition"
+                >
+                  Contact Us
+                </a>
+
               </div>
             </div>
 
