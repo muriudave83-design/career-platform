@@ -5,6 +5,7 @@ import { signOut, useSession } from "next-auth/react";
 
 export default function Home() {
   const { data: session } = useSession();
+  console.log("SESSION:", session);
 
   return (
     <>
@@ -37,12 +38,21 @@ export default function Home() {
               Internships
             </a>
 
-            <a
-              href="#"
+            <Link
+              href="/resources"
               className="hover:text-[#00C853] transition-all duration-300"
             >
-              Career Tips
-            </a>
+              Career Guides
+            </Link>
+
+            {session?.user && (
+              <Link
+                href="/admin"
+                className="hover:text-[#00C853] transition-all duration-300"
+              >
+                Admin
+              </Link>
+            )}
 
             <a
               href="#"
@@ -971,6 +981,22 @@ export default function Home() {
                 >
                   Internships
                 </a>
+
+                <Link
+                    href="/resources"
+                    className="block hover:text-[#00C853] transition-all duration-300"
+                  >
+                    Career Guides
+                  </Link>
+
+                  {session?.user && (
+                    <Link
+                      href="/admin"
+                      className="block hover:text-[#00C853] transition-all duration-300"
+                    >
+                      Admin Dashboard
+                    </Link>
+                  )}
 
                 <a
                   href="#"
