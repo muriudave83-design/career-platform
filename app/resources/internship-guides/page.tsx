@@ -1,6 +1,9 @@
-import Link from "next/link";
 import { Metadata } from "next";
-import { articles } from "@/lib/articles";
+import { articles } from "@/src/lib/articles";
+import ArticleCard from "@/components/resources/ArticleCard";
+import CategoryHero from "@/components/resources/CategoryHero";
+import FeaturedArticle from "@/components/resources/FeaturedArticle";
+import ResourceStats from "@/components/resources/ResourceStats";
 
 export const metadata: Metadata = {
   title:
@@ -15,34 +18,67 @@ export default function InternshipGuidesPage() {
   );
 
   return (
-    <main className="min-h-screen bg-white">
-      <section className="max-w-5xl mx-auto px-6 py-20">
-        <h1 className="text-5xl font-black text-gray-900 mb-6">
-          Internship Guides
-        </h1>
+    <main className="min-h-screen bg-[linear-gradient(to_bottom_right,#ffffff,#f7fff8,#eefcf1)]">
+      <section className="max-w-7xl mx-auto px-6 py-20">
 
-        <p className="text-lg text-gray-600 leading-8 mb-12">
-          Explore internship application strategies, industrial attachment
-          guidance and practical advice for students and graduates.
-        </p>
+        <CategoryHero
+          badge="🚀 Internship Success Hub"
+          title="Internship Guides For"
+          highlight="Ambitious Students"
+          description="Learn how to secure internships, industrial attachments and graduate opportunities from Kenya's leading employers."
+        />
 
-        <div className="grid gap-6">
-          {internshipArticles.map((article) => (
-            <Link
-              key={article.slug}
-              href={`/resources/${article.category}/${article.slug}`}
-              className="block border border-green-100 rounded-3xl p-8 hover:border-green-300 hover:shadow-xl transition-all"
-            >
-              <h2 className="text-2xl font-bold text-gray-900 mb-3">
-                {article.title}
+        <ResourceStats
+          articleCount={internshipArticles.length}
+        />
+
+        {internshipArticles.length > 0 && (
+          <FeaturedArticle
+            title={internshipArticles[0].title}
+            description={internshipArticles[0].description}
+            href={`/resources/${internshipArticles[0].category}/${internshipArticles[0].slug}`}
+          />
+        )}
+
+        {/* ARTICLE LIBRARY */}
+
+        <div className="mt-24">
+
+          <div className="flex items-center justify-between mb-10">
+
+            <div>
+              <h2 className="text-3xl font-black text-gray-900">
+                Latest Guides
               </h2>
 
-              <p className="text-gray-600">
-                {article.description}
+              <p className="text-gray-600 mt-2">
+                Explore practical internship advice and career resources.
               </p>
-            </Link>
-          ))}
+            </div>
+
+            <div className="hidden md:flex items-center gap-2 bg-[#E8F5E9] text-[#00A63E] px-4 py-2 rounded-full font-semibold">
+              {internshipArticles.length} Guide
+              {internshipArticles.length !== 1 ? "s" : ""}
+            </div>
+
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-8">
+
+            {internshipArticles.map((article) => (
+              <ArticleCard
+                key={article.slug}
+                title={article.title}
+                description={article.description}
+                href={`/resources/${article.category}/${article.slug}`}
+                category="Internship Guide"
+              />
+            ))}
+
+          </div>
+
         </div>
+
       </section>
     </main>
   );

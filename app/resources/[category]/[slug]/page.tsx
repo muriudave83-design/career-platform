@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { articles } from "@/lib/articles";
+import { articles } from "@/src/lib/articles";
 
 type Props = {
   params: Promise<{

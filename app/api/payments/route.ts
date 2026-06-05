@@ -1,4 +1,4 @@
-import { getAuthSession } from "@/lib/auth";
+import { getAuthSession } from "@/src/lib/auth";
 import { prisma } from "@/lib/prisma";
 
 export async function POST(req: Request) {
