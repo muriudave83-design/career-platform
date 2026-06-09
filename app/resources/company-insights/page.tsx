@@ -1,29 +1,82 @@
 import { Metadata } from "next";
+import { articles } from "@/src/lib/articles";
+import ArticleCard from "@/components/resources/ArticleCard";
+import CategoryHero from "@/components/resources/CategoryHero";
+import FeaturedArticle from "@/components/resources/FeaturedArticle";
+import ResourceStats from "@/components/resources/ResourceStats";
 
 export const metadata: Metadata = {
   title:
     "Company Insights | Employers, Internships & Recruitment | JoinNexiva",
-
   description:
     "Learn about employers, internship programs, recruitment processes and workplace expectations across different industries.",
 };
 
 export default function CompanyInsightsPage() {
+  const companyArticles = articles.filter(
+    (article) => article.category === "company-insights"
+  );
+
   return (
-    <main className="min-h-screen bg-gradient-to-br from-white via-[#f7fff8] to-[#e8f5e9]">
-      <section className="max-w-5xl mx-auto px-6 py-20">
-        <span className="bg-green-100 text-green-700 px-4 py-2 rounded-full font-medium">
-          Company Insights
-        </span>
+    <main className="min-h-screen bg-[linear-gradient(to_bottom_right,#ffffff,#f7fff8,#eefcf1)]">
+      <section className="max-w-7xl mx-auto px-6 py-20">
 
-        <h1 className="mt-6 text-5xl font-black text-gray-900">
-          Company Insights
-        </h1>
+        <CategoryHero
+          badge="🏢 Employer Insights Hub"
+          title="Understand What"
+          highlight="Employers Want"
+          description="Learn how companies recruit, what hiring managers look for and how to position yourself for internship and graduate opportunities."
+        />
 
-        <p className="mt-6 text-lg text-gray-600 leading-8">
-          Understand how employers recruit, what they look for in candidates
-          and how to position yourself for success.
-        </p>
+        <ResourceStats
+          articleCount={companyArticles.length}
+        />
+
+        {companyArticles.length > 0 && (
+          <FeaturedArticle
+            title={companyArticles[0].title}
+            description={companyArticles[0].description}
+            href={`/resources/${companyArticles[0].category}/${companyArticles[0].slug}`}
+          />
+        )}
+
+        <div className="mt-24">
+
+          <div className="flex items-center justify-between mb-10">
+
+            <div>
+              <h2 className="text-3xl font-black text-gray-900">
+                Latest Guides
+              </h2>
+
+              <p className="text-gray-600 mt-2">
+                Explore employer insights, recruitment trends and workplace guidance.
+              </p>
+            </div>
+
+            <div className="hidden md:flex items-center gap-2 bg-[#E8F5E9] text-[#00A63E] px-4 py-2 rounded-full font-semibold">
+              {companyArticles.length} Guide
+              {companyArticles.length !== 1 ? "s" : ""}
+            </div>
+
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-8">
+
+            {companyArticles.map((article) => (
+              <ArticleCard
+                key={article.slug}
+                title={article.title}
+                description={article.description}
+                href={`/resources/${article.category}/${article.slug}`}
+                category="Company Insight"
+              />
+            ))}
+
+          </div>
+
+        </div>
+
       </section>
     </main>
   );
