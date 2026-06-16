@@ -47,7 +47,7 @@ export default function AdminPage() {
   }, []);
 
   if (
-    session?.user?.role !== "ADMIN"
+    (session?.user as any)?.role !== "ADMIN"
   ) {
     return (
       <div className="min-h-screen bg-black text-white p-10">
