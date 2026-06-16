@@ -2,19 +2,31 @@
 
 import { signIn } from "next-auth/react";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
-  const handleLogin = async () => {
-    await signIn("credentials", {
-      email,
-      password,
-      redirect: true,
-      callbackUrl: "/listings",
-    });
-  };
+const handleLogin = async () => {
+  const result = await signIn("credentials", {
+    email,
+    password,
+    redirect: false,
+  });
+
+if (result?.ok) {
+  const sessionRes = await fetch("/api/auth/session");
+  const session = await sessionRes.json();
+
+  if (session?.user?.role === "ADMIN") {
+    router.push("/admin");
+  } else {
+    router.push("/listings");
+  }
+}
+};
 
   return (
     <div className="p-6">

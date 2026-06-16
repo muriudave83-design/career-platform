@@ -46,16 +46,15 @@ export default function AdminPage() {
     fetchData();
   }, []);
 
-    if (
-  session?.user?.email !==
-  "brianwanyoike17@gmail.com"
-) {
-  return (
-    <div className="min-h-screen bg-black text-white p-10">
-      Access Denied
-    </div>
-  );
-}
+  if (
+    session?.user?.role !== "ADMIN"
+  ) {
+    return (
+      <div className="min-h-screen bg-black text-white p-10">
+        Access Denied
+      </div>
+    );
+  }
 
   async function createListing(e: any) {
     e.preventDefault();
