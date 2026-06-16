@@ -45,15 +45,14 @@ export default function Home() {
               Career Guides
             </Link>
 
-            {session?.user && (
-              <Link
-                href="/admin"
-                className="hover:text-[#00C853] transition-all duration-300"
-              >
-                Admin
-              </Link>
-            )}
-
+          {(session?.user as any)?.role === "ADMIN" && (
+            <Link
+              href="/admin"
+              className="hover:text-[#00C853] transition-all duration-300"
+            >
+              Admin
+            </Link>
+          )}
             <a
               href="#"
               className="hover:text-[#00C853] transition-all duration-300"
