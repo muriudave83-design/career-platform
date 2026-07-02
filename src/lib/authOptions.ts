@@ -26,6 +26,10 @@ export const authOptions: NextAuthOptions = {
           },
         });
 
+        console.log("LOGIN ATTEMPT:", credentials.email);
+        console.log("USER FOUND:", !!user);
+        console.log("ROLE:", user?.role);
+
         if (!user) {
           throw new Error("User not found");
         }
@@ -36,8 +40,11 @@ export const authOptions: NextAuthOptions = {
         );
 
         if (!passwordMatch) {
+          console.log("PASSWORD MISMATCH");
           throw new Error("Invalid password");
         }
+
+        console.log("LOGIN SUCCESS");
 
         return {
           id: user.id,

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useSession, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 export default function AdminPage() {
 
@@ -50,17 +50,8 @@ export default function AdminPage() {
     (session?.user as any)?.role !== "ADMIN"
   ) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50">
-        <div className="bg-white border border-red-200 rounded-3xl p-10 shadow-sm text-center">
-          <h1 className="text-3xl font-bold text-red-600">
-            Access Denied
-          </h1>
-
-          <p className="text-gray-500 mt-3">
-            You must be an administrator to access
-            the recruiter console.
-          </p>
-        </div>
+      <div className="min-h-screen bg-black text-white p-10">
+        Access Denied
       </div>
     );
   }
@@ -113,84 +104,11 @@ export default function AdminPage() {
             <div className="bg-white/15 border border-white/20 px-4 py-2 rounded-2xl text-white text-sm font-medium backdrop-blur-md">
               Admin Access
             </div>
-
-            <div className="bg-white/15 border border-white/20 px-4 py-2 rounded-2xl text-white text-sm font-medium backdrop-blur-md">
-              {(session?.user as any)?.email ?? "Administrator"}
-            </div>
-
-            <button
-              onClick={() =>
-                signOut({
-                  callbackUrl: "/login",
-                })
-              }
-              className="bg-red-500 hover:bg-red-400 text-white px-4 py-2 rounded-2xl text-sm font-medium transition"
-            >
-              Logout
-            </button>
           </div>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 py-8 space-y-10">
-        <nav className="flex items-center gap-2 text-sm text-gray-500">
-          <span>Dashboard</span>
-          <span>/</span>
-          <span className="font-semibold text-green-700">
-            Recruiter Console
-          </span>
-        </nav>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
-          <div className="bg-white border border-gray-200 rounded-3xl p-6 shadow-sm">
-            <p className="text-sm text-gray-500">
-              Total Listings
-            </p>
-
-            <h3 className="text-4xl font-bold mt-2 text-gray-900">
-              {listings.length}
-            </h3>
-          </div>
-
-          <div className="bg-white border border-gray-200 rounded-3xl p-6 shadow-sm">
-            <p className="text-sm text-gray-500">
-              Premium Listings
-            </p>
-
-            <h3 className="text-4xl font-bold mt-2 text-green-700">
-              {
-                listings.filter(
-                  (l: any) => l.isPremium
-                ).length
-              }
-            </h3>
-          </div>
-
-          <div className="bg-white border border-gray-200 rounded-3xl p-6 shadow-sm">
-            <p className="text-sm text-gray-500">
-              Payments
-            </p>
-
-            <h3 className="text-4xl font-bold mt-2 text-gray-900">
-              {payments.length}
-            </h3>
-          </div>
-
-          <div className="bg-white border border-gray-200 rounded-3xl p-6 shadow-sm">
-            <p className="text-sm text-gray-500">
-              Revenue
-            </p>
-
-            <h3 className="text-4xl font-bold mt-2 text-green-700">
-              KSh{" "}
-              {payments.reduce(
-                (sum: number, payment: any) =>
-                  sum + (payment.amount || 0),
-                0
-              )}
-            </h3>
-          </div>
-        </div>
         {/* CREATE LISTING */}
         <div className="bg-white border border-gray-200 rounded-3xl p-8 shadow-sm">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">

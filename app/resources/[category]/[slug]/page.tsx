@@ -65,6 +65,25 @@ export default async function ArticlePage({ params }: Props) {
     notFound();
   }
 
+  const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: article.title,
+  description: article.description,
+  author: {
+    "@type": "Organization",
+    name: "JoinNexiva",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "JoinNexiva",
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": `https://joinnexiva.com/resources/${article.category}/${article.slug}`,
+  },
+};
+
   const relatedArticles = articles
     .filter(
       (a) =>
@@ -73,9 +92,16 @@ export default async function ArticlePage({ params }: Props) {
     )
     .slice(0, 3);
 
-  return (
-    <main className="min-h-screen bg-[linear-gradient(to_bottom_right,#ffffff,#f7fff8,#e8f5e9)]">
-      <section className="max-w-4xl mx-auto px-6 py-20">
+      return (
+        <main className="min-h-screen bg-[linear-gradient(to_bottom_right,#ffffff,#f7fff8,#e8f5e9)]">
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(jsonLd),
+            }}
+          />
+
+          <section className="max-w-4xl mx-auto px-6 py-20">
         <nav className="flex flex-wrap items-center gap-2 text-sm text-gray-500 mb-8">
           <Link href="/" className="hover:text-[#00C853] transition">
             Home
