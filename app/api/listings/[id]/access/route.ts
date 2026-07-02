@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { getAuthSession } from "@/src/lib/auth";
-import { hasListingAccess } from "@/src/lib/hasListingAccess";
+import { getAuthSession } from "@/lib/auth";
+import { hasListingAccess } from "@/lib/hasListingAccess";
 
 export async function GET(
   req: NextRequest,

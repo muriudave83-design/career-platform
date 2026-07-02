@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { articles } from "@/src/lib/articles";
+import { articles } from "@/lib/articles";
 import ArticleCard from "@/components/resources/ArticleCard";
 import CategoryHero from "@/components/resources/CategoryHero";
 import FeaturedArticle from "@/components/resources/FeaturedArticle";

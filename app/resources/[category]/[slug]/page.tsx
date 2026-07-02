@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
-import { articles } from "@/src/lib/articles";
+import { articles } from "@/lib/articles";
 import ArticleCard from "@/components/resources/ArticleCard";
 
 type Props = {

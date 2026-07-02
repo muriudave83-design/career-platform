@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { articles } from "@/src/lib/articles";
+import { articles } from "@/lib/articles";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://joinnexiva.com";
