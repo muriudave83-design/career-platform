@@ -20,8 +20,8 @@ export async function POST(req: Request) {
       where: { email },
     });
 
-    // Always return success to avoid revealing whether
-    // an email address exists.
+    // Always return success to prevent revealing
+    // whether an email address exists.
     if (!user) {
       return NextResponse.json({
         success: true,
@@ -34,8 +34,6 @@ export async function POST(req: Request) {
       Date.now() + 1000 * 60 * 60
     ); // 1 hour
 
-    console.log("STEP 1 - User found:", email);
-
     await prisma.passwordResetToken.create({
       data: {
         email,
@@ -44,24 +42,13 @@ export async function POST(req: Request) {
       },
     });
 
-    console.log("STEP 2 - Token saved");
-
-    try {
-      console.log("STEP 3 - About to send email");
-
-      await sendPasswordResetEmail(email, token);
-
-      console.log("✅ Email sent successfully.");
-    } catch (error) {
-      console.error("❌ EMAIL ERROR:");
-      console.error(error);
-    }
+    await sendPasswordResetEmail(email, token);
 
     return NextResponse.json({
       success: true,
     });
   } catch (error) {
-    console.error(error);
+    console.error("Forgot password error:", error);
 
     return NextResponse.json(
       { error: "Something went wrong." },

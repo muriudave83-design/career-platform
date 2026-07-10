@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 :root {
   --background: #ffffff;
@@ -8,19 +9,55 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* JoinNexiva Article Theme */
+
+.prose {
+  --tw-prose-headings: #111827;
+  --tw-prose-body: #374151;
+  --tw-prose-links: #00A63E;
+  --tw-prose-bold: #111827;
+  --tw-prose-bullets: #00C853;
+  --tw-prose-counters: #00C853;
+  --tw-prose-quotes: #111827;
+  --tw-prose-quote-borders: #00C853;
+  --tw-prose-th-borders: #d1fae5;
+  --tw-prose-td-borders: #e5e7eb;
+}
+
+.prose h2 {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose h3 {
+  margin-top: 2rem;
+  margin-bottom: .75rem;
+}
+
+.prose table {
+  width: 100%;
+}
+
+.prose blockquote {
+  border-left: 4px solid #00C853;
+  font-style: normal;
+}
+
+.prose a {
+  text-decoration: none;
+}
+
+.prose a:hover {
+  text-decoration: underline;
 }

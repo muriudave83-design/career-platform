@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { articles } from "@/lib/articles";
+import { getArticlesByCategory } from "@/lib/content";
 import ArticleCard from "@/components/resources/ArticleCard";
 import CategoryHero from "@/components/resources/CategoryHero";
 import FeaturedArticle from "@/components/resources/FeaturedArticle";
@@ -13,14 +13,13 @@ export const metadata: Metadata = {
 };
 
 export default function GraduateProgramsPage() {
-  const graduateArticles = articles.filter(
-    (article) => article.category === "graduate-programs"
+  const graduateArticles = getArticlesByCategory(
+    "graduate-programs"
   );
 
   return (
     <main className="min-h-screen bg-[linear-gradient(to_bottom_right,#ffffff,#f7fff8,#eefcf1)]">
       <section className="max-w-7xl mx-auto px-6 py-20">
-
         <CategoryHero
           badge="🎓 Graduate Success Hub"
           title="Top Graduate Programs For"
@@ -28,22 +27,18 @@ export default function GraduateProgramsPage() {
           description="Discover graduate trainee programs, leadership development opportunities and career pathways offered by leading employers."
         />
 
-        <ResourceStats
-          articleCount={graduateArticles.length}
-        />
+        <ResourceStats articleCount={graduateArticles.length} />
 
         {graduateArticles.length > 0 && (
           <FeaturedArticle
-            title={graduateArticles[0].title}
-            description={graduateArticles[0].description}
-            href={`/resources/${graduateArticles[0].category}/${graduateArticles[0].slug}`}
+            title={graduateArticles[0].frontmatter.title}
+            description={graduateArticles[0].frontmatter.description}
+            href={`/resources/${graduateArticles[0].frontmatter.category}/${graduateArticles[0].frontmatter.slug}`}
           />
         )}
 
         <div className="mt-24">
-
           <div className="flex items-center justify-between mb-10">
-
             <div>
               <h2 className="text-3xl font-black text-gray-900">
                 Latest Guides
@@ -58,25 +53,20 @@ export default function GraduateProgramsPage() {
               {graduateArticles.length} Guide
               {graduateArticles.length !== 1 ? "s" : ""}
             </div>
-
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8">
-
             {graduateArticles.map((article) => (
               <ArticleCard
-                key={article.slug}
-                title={article.title}
-                description={article.description}
-                href={`/resources/${article.category}/${article.slug}`}
+                key={article.frontmatter.slug}
+                title={article.frontmatter.title}
+                description={article.frontmatter.description}
+                href={`/resources/${article.frontmatter.category}/${article.frontmatter.slug}`}
                 category="Graduate Program Guide"
               />
             ))}
-
           </div>
-
         </div>
-
       </section>
     </main>
   );

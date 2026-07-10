@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { articles } from "@/lib/articles";
+import { getArticlesByCategory } from "@/lib/content";
 import ArticleCard from "@/components/resources/ArticleCard";
 import CategoryHero from "@/components/resources/CategoryHero";
 import FeaturedArticle from "@/components/resources/FeaturedArticle";
@@ -13,14 +13,13 @@ export const metadata: Metadata = {
 };
 
 export default function InternshipGuidesPage() {
-  const internshipArticles = articles.filter(
-    (article) => article.category === "internship-guides"
+  const internshipArticles = getArticlesByCategory(
+    "internship-guides"
   );
 
   return (
     <main className="min-h-screen bg-[linear-gradient(to_bottom_right,#ffffff,#f7fff8,#eefcf1)]">
       <section className="max-w-7xl mx-auto px-6 py-20">
-
         <CategoryHero
           badge="🚀 Internship Success Hub"
           title="Internship Guides For"
@@ -28,24 +27,20 @@ export default function InternshipGuidesPage() {
           description="Learn how to secure internships, industrial attachments and graduate opportunities from Kenya's leading employers."
         />
 
-        <ResourceStats
-          articleCount={internshipArticles.length}
-        />
+        <ResourceStats articleCount={internshipArticles.length} />
 
         {internshipArticles.length > 0 && (
           <FeaturedArticle
-            title={internshipArticles[0].title}
-            description={internshipArticles[0].description}
-            href={`/resources/${internshipArticles[0].category}/${internshipArticles[0].slug}`}
+            title={internshipArticles[0].frontmatter.title}
+            description={internshipArticles[0].frontmatter.description}
+            href={`/resources/${internshipArticles[0].frontmatter.category}/${internshipArticles[0].frontmatter.slug}`}
           />
         )}
 
         {/* ARTICLE LIBRARY */}
 
         <div className="mt-24">
-
           <div className="flex items-center justify-between mb-10">
-
             <div>
               <h2 className="text-3xl font-black text-gray-900">
                 Latest Guides
@@ -60,25 +55,20 @@ export default function InternshipGuidesPage() {
               {internshipArticles.length} Guide
               {internshipArticles.length !== 1 ? "s" : ""}
             </div>
-
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8">
-
             {internshipArticles.map((article) => (
               <ArticleCard
-                key={article.slug}
-                title={article.title}
-                description={article.description}
-                href={`/resources/${article.category}/${article.slug}`}
+                key={article.frontmatter.slug}
+                title={article.frontmatter.title}
+                description={article.frontmatter.description}
+                href={`/resources/${article.frontmatter.category}/${article.frontmatter.slug}`}
                 category="Internship Guide"
               />
             ))}
-
           </div>
-
         </div>
-
       </section>
     </main>
   );

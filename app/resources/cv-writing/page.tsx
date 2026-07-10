@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { articles } from "@/lib/articles";
+import { getArticlesByCategory } from "@/lib/content";
 import ArticleCard from "@/components/resources/ArticleCard";
 import CategoryHero from "@/components/resources/CategoryHero";
 import FeaturedArticle from "@/components/resources/FeaturedArticle";
@@ -12,14 +12,11 @@ export const metadata: Metadata = {
 };
 
 export default function CVWritingPage() {
-  const cvArticles = articles.filter(
-    (article) => article.category === "cv-writing"
-  );
+  const cvArticles = getArticlesByCategory("cv-writing");
 
   return (
     <main className="min-h-screen bg-[linear-gradient(to_bottom_right,#ffffff,#f7fff8,#eefcf1)]">
       <section className="max-w-7xl mx-auto px-6 py-20">
-
         <CategoryHero
           badge="📄 CV Success Hub"
           title="Write A CV That"
@@ -27,22 +24,18 @@ export default function CVWritingPage() {
           description="Learn how to create professional CVs that stand out to recruiters and increase your chances of securing internships and jobs."
         />
 
-        <ResourceStats
-          articleCount={cvArticles.length}
-        />
+        <ResourceStats articleCount={cvArticles.length} />
 
         {cvArticles.length > 0 && (
           <FeaturedArticle
-            title={cvArticles[0].title}
-            description={cvArticles[0].description}
-            href={`/resources/${cvArticles[0].category}/${cvArticles[0].slug}`}
+            title={cvArticles[0].frontmatter.title}
+            description={cvArticles[0].frontmatter.description}
+            href={`/resources/${cvArticles[0].frontmatter.category}/${cvArticles[0].frontmatter.slug}`}
           />
         )}
 
         <div className="mt-24">
-
           <div className="flex items-center justify-between mb-10">
-
             <div>
               <h2 className="text-3xl font-black text-gray-900">
                 Latest Guides
@@ -57,25 +50,20 @@ export default function CVWritingPage() {
               {cvArticles.length} Guide
               {cvArticles.length !== 1 ? "s" : ""}
             </div>
-
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8">
-
             {cvArticles.map((article) => (
               <ArticleCard
-                key={article.slug}
-                title={article.title}
-                description={article.description}
-                href={`/resources/${article.category}/${article.slug}`}
+                key={article.frontmatter.slug}
+                title={article.frontmatter.title}
+                description={article.frontmatter.description}
+                href={`/resources/${article.frontmatter.category}/${article.frontmatter.slug}`}
                 category="CV Writing Guide"
               />
             ))}
-
           </div>
-
         </div>
-
       </section>
     </main>
   );

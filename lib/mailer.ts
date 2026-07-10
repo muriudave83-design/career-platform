@@ -14,25 +14,52 @@ export async function sendPasswordResetEmail(
   email: string,
   token: string
 ) {
-  console.log("===== MAILER CALLED =====");
-  console.log("To:", email);
-
   const resetUrl = `${process.env.NEXTAUTH_URL}/reset-password?token=${token}`;
 
-  console.log("Reset URL:", resetUrl);
+  try {
+    await transporter.sendMail({
+      from: process.env.EMAIL_FROM,
+      to: email,
+      subject: "Reset your JoinNexiva password",
+      html: `
+        <h2>Reset Your Password</h2>
 
-  await transporter.verify();
-  console.log("SMTP VERIFIED");
+        <p>You recently requested to reset your JoinNexiva password.</p>
 
-  const info = await transporter.sendMail({
-    from: process.env.EMAIL_FROM,
-    to: email,
-    subject: "Reset your JoinNexiva password",
-    html: `
-      <h2>Reset your password</h2>
-      <p><a href="${resetUrl}">Reset Password</a></p>
-    `,
-  });
+        <p>Click the button below to choose a new password:</p>
 
-  console.log("MESSAGE ID:", info.messageId);
+        <p>
+          <a
+            href="${resetUrl}"
+            style="
+              display:inline-block;
+              padding:12px 24px;
+              background:#16a34a;
+              color:#ffffff;
+              text-decoration:none;
+              border-radius:8px;
+              font-weight:bold;
+            "
+          >
+            Reset Password
+          </a>
+        </p>
+
+        <p>If the button doesn't work, copy and paste this link into your browser:</p>
+
+        <p>${resetUrl}</p>
+
+        <hr />
+
+        <p>This link expires in 1 hour.</p>
+
+        <p>If you didn't request a password reset, you can safely ignore this email.</p>
+
+        <p>— The JoinNexiva Team</p>
+      `,
+    });
+  } catch (error) {
+    console.error("Failed to send password reset email:", error);
+    throw error;
+  }
 }
