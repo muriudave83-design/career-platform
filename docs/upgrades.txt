@@ -1,0 +1,128 @@
+🚀 1. Per-listing unlock (MOST IMPORTANT)
+
+Right now:
+👉 One payment unlocks everything
+
+Upgrade to:
+👉 Pay per listing
+
+What to change:
+Add listingId to Payment model
+Check access per listing
+Why it matters:
+
+👉 This is how real job platforms monetize
+
+💳 2. Real payments (M-Pesa / Stripe)
+
+Right now:
+👉 Fake payment
+
+Upgrade to:
+👉 Real money
+
+Options:
+M-Pesa (perfect for Kenya 🇰🇪)
+Stripe (global)
+Add:
+Payment status: pending → success → failed
+Webhook confirmation
+🧠 3. Prevent duplicate payments
+
+Right now:
+👉 User can pay multiple times for same thing
+
+Fix:
+
+Before creating payment:
+
+const existing = await prisma.payment.findFirst({
+  where: {
+    userId,
+    listingId,
+    status: "completed",
+  },
+});
+
+👉 If exists → skip payment
+
+⏳ 4. Expiring access (subscription logic)
+
+Instead of forever access:
+
+👉 Add:
+
+expiresAt: DateTime
+
+Then check:
+
+expiresAt > now
+Use cases:
+7-day unlock
+30-day pass
+monthly subscription
+🏷️ 5. “Already unlocked” UI
+
+Better UX:
+
+Instead of hiding lock completely:
+
+👉 Show:
+
+✅ You already unlocked this listing
+📊 6. Analytics (VERY powerful)
+
+Track:
+
+Which listings get unlocked most
+Conversion rate (views → payments)
+Revenue
+
+👉 Add table:
+
+ListingView
+❤️ 7. Bookmark + Premium combo
+
+Upgrade saved listings:
+
+👉 Show:
+
+🔒 Locked
+✅ Unlocked
+
+inside /saved
+
+🔐 8. Real authentication (IMPORTANT)
+
+Right now:
+👉 Hardcoded userId ❌
+
+Upgrade to:
+
+NextAuth / Clerk / Firebase Auth
+⚡ 9. Optimistic UI (pro-level polish)
+
+Make unlock feel instant:
+
+👉 Unlock UI BEFORE API finishes
+
+🧾 10. Payment history page
+
+Add:
+
+👉 /payments
+
+User sees:
+
+what they paid for
+when
+status
+🎯 Recommended order (don’t do all at once)
+
+Do in this order:
+
+✅ Per-listing unlock
+✅ Prevent duplicate payments
+✅ “Already unlocked” UI
+💳 Real payments
+🔐 Auth
